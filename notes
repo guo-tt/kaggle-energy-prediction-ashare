@@ -1,0 +1,447 @@
+- without filtering on site 0,1,2
+1.40 0.274
+
+v4 description :
+- only suspicious 1 & 2
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale'
+
+v5 description :
+- only suspicious 1 & 2
+- switched to 1000 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time'
+
+v6 description :
+- only suspicious 1 & 2
+- switched to 500 estimators
+- end after 200 rounds 
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time'
+
+v7 description :
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- end after 200 rounds 
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 
+
+v8 description :
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- end after 200 rounds 
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+
+v9 description :
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 100
+- end after 100 rounds 
+
+v10 description :
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+
+v11 description :
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- num_leaves = 2**7
+--> reduced overfitting but increased error
+
+
+v12 description : similar as v10 but with lesser variables
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+
+v13 description : similar as v10 but with regularization
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- added cat_l2 and lambda_l2 = 0.01
+
+v14 description : mix of v12 and v13
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- end after 100 rounds 
+- added cat_l2 and lambda_l2 = 0.01
+
+v15 description : similar as v12 but with max depth as 20 
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- max depth as 20
+- not much difference so far, reducing it to 15
+
+
+v16 description : similar as v12 but with goss
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- goss
+- max depth 15
+- after first trial : diverging , reducing learning rate to 0.01. 
+- after second trial : Still low convergence (1.3), changing 'top_rate':0.5, 'other_rate':0.2, learning rate to 0.005
+- after third trial : Still low convergence (1.3), changing 'top_rate':0.5, 'other_rate':0.4, learning rate to 0.005
+
+
+v17 description : 
+- REMOVED suspicious 1 & 2
+- week cv
+- switched to 500 estimators
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- reduced max_bins to 50
+- end after 100 rounds 
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- max depth as 15
+- 'colsample_bytree': 0.7,'num_leaves': 2**7,'n_estimators':1000 + goss
+
+v18 description : similar as v16 but with no max depth restriction
+
+v19 description : similar as v17 but with 1000 estimators and 128 leaves - not much progress...
+
+v20 description : similar as v18 but with no max depth restriction + 1000 estimators
+
+v21 description : similar as v20
+- realized from v20 that there are only 330 trees anyways, so no point. Increased leaves to 512
+
+v22 :
+ - removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+- {
+    'objective': 'regression',
+     'boosting_type': 'gbdt',
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.05,
+     'num_leaves': 256,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.7,
+     'subsample_freq': 1,
+     'subsample': 0.5,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':500,
+     'seed': seed,
+     'early_stopping_rounds':100 }
+
+v23 : 
+- removed 'wind_speed','cloudCover','longitude','irradiance_cloud', 'cloudCover_max_lag72',
+             'wind_direction_cos','wind_direction_sin','new_year_built', 'cloud_coverage'
+- removed 'new_cloud_coverage', 'afternoon', 'morning', 'evening', 'beaufort_scale', 'uvIndex', 'night_time', 'new_precip_depth_1_hr','precip_depth_1_hr', 'cloudCover_min_lag72', 'square_feet_log'
+{
+    'objective': 'regression',
+     'boosting_type': 'gbdt',
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.05,
+     'num_leaves': 256,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.7,
+     'subsample_freq': 1,
+     'subsample': 0.5,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':500,
+     'seed': seed,
+     'cat_l2':0.05,
+     'lambda_l2':0.05,
+     'early_stopping_rounds':100 }
+
+v24: 
+- reduced trees to 200 and colsample_bytree to 0.7. 
+- reduced overfitting but also increased error (even on test)
+{'objective': 'regression',
+ 'boosting_type': 'gbdt',
+ 'metric': 'rmse',
+ 'n_jobs': -1,
+ 'learning_rate': 0.05,
+ 'num_leaves': 256,
+ 'max_depth': -1,
+ 'tree_learner': 'serial',
+ 'colsample_bytree': 0.9,
+ 'subsample_freq': 1,
+ 'subsample': 0.5,
+ 'max_bin': 50,
+ 'verbose': 2,
+ 'n_estimators': 300,
+ 'seed': 7,
+ 'early_stopping_rounds': 100}
+
+v25: by meter
+{
+    'objective': 'regression',
+     'boosting_type': 'goss',
+     'top_rate':0.5,
+     'other_rate':0.2,
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.02,
+     'num_leaves': 256,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.9,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':500,
+     'seed': seed,
+     'cat_l2':0.01,
+     'lambda_l2':0.01,
+     'early_stopping_rounds':100 }
+
+V26: by meter
+{
+    'objective': 'regression',
+     'boosting_type': 'goss',
+     'top_rate':0.5,
+     'other_rate':0.2,
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.02,
+     'num_leaves': 200,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.9,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':400,
+     'seed': seed,
+     'cat_l2':0.01,
+     'lambda_l2':0.01,
+     'early_stopping_rounds':100 }
+
+V27: by meter
+{
+    'objective': 'regression',
+     'boosting_type': 'goss',
+     'top_rate':0.5,
+     'other_rate':0.2,
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.02,
+     'num_leaves': 150,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.9,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':200,
+     'seed': seed,
+     'early_stopping_rounds':100 }
+ 
+
+V28: by meter
+- added 'meter_median',
+ 'meter_min',
+ 'meter_max',
+ 'meter_std'
+{
+    'objective': 'regression',
+     'boosting_type': 'goss',
+     'top_rate':0.5,
+     'other_rate':0.2,
+     'metric': 'rmse',
+     'n_jobs': -1,
+     'learning_rate': 0.02,
+     'num_leaves': 150,
+     'max_depth': -1,
+     'tree_learner': 'serial',
+     'colsample_bytree': 0.6,
+     'max_bin': 50,
+     'verbose': 2,
+     'n_estimators':400,
+     'seed': seed,
+     'early_stopping_rounds':100 }
+
+29 : same as 28 but with 'n_estimators':200 
+{'objective': 'regression',
+ 'boosting_type': 'goss',
+ 'top_rate': 0.5,
+ 'other_rate': 0.2,
+ 'metric': 'rmse',
+ 'n_jobs': -1,
+ 'learning_rate': 0.02,
+ 'num_leaves': 150,
+ 'max_depth': -1,
+ 'tree_learner': 'serial',
+ 'colsample_bytree': 0.6,
+ 'max_bin': 50,
+ 'verbose': 2,
+ 'seed': 7}
+
+
+30 : same as 29 but without
+'new_sea_level_pressure',
+ 'new_wind_speed',
+ 'new_wind_direction_cos',
+ 'meter_min',
+ 'new_wind_direction_sin'
+And col_sample = 0.9
+n_estimators = 200
+{'objective': 'regression',
+ 'boosting_type': 'goss',
+ 'top_rate': 0.5,
+ 'other_rate': 0.2,
+ 'metric': 'rmse',
+ 'n_jobs': -1,
+ 'learning_rate': 0.02,
+ 'num_leaves': 150,
+ 'max_depth': -1,
+ 'tree_learner': 'serial',
+ 'colsample_bytree': 0.9,
+ 'max_bin': 50,
+ 'verbose': 2,
+ 'seed': 7}
+
+31:
+Increased n_estimators to 1000 and L2 regularisation
+Added 
+['meter_hour_median',
+ 'meter_hour_min',
+ 'meter_hour_max',
+ 'meter_hour_std']
+
+{'objective': 'regression',
+ 'boosting_type': 'goss',
+ 'top_rate': 0.5,
+ 'other_rate': 0.2,
+ 'metric': 'rmse',
+ 'n_jobs': -1,
+ 'learning_rate': 0.02,
+ 'num_leaves': 150,
+ 'max_depth': -1,
+ 'tree_learner': 'serial',
+ 'colsample_bytree': 0.5,
+ 'max_bin': 50,
+ 'verbose': 2,
+ 'seed': 7,
+ 'cat_l2': 0.05,
+ 'lambda_l2': 0.05}
+
+
+32 : same as 31 but using log_meter_reading instead of meter_reading for features - no difference
+
+
+37: 
+- restarting from v18, 
+- reducing learning rate from 0.01 to 0.005 to avoid the loss bounce from goss method
+
+38: failed attempt (was diverging too much)
+
+39 : retrain v18 with new filled na data. (Same columns, same parameters) - not much difference
+
+40: retrain 37 with min_max calculated after removing suspicious rows
+
+41 : retrain 40 with lesser columns
+
+
+LB Scores : 
+submission_v41 : 1.185
+submission_v39 : 1.158
+submission_v37 : 1.116
+
+submission_v18_imputed : 1.145
+submission_stack_imputed : 1.059
+submission_v37_imputed : 1.011
+
+submission_blend_1_bis_leaked : 0.966
+submission_blend_2_leaked : 0.953
+submission_blend_3_leaked : 0.965
+submission_blend_4_leaked : 0.953
+submission_blend_5_leaked : 0.962
+submission_blend_8_leaked : 0.961
+submission_blend_10_leaked : 0.951
+
+
+Leaked Scores : 
+ - submission_v18 : 1.036
+ - submission_v37 : 0.997
+ - submission_v40 : 1.014
+ - submission_v41 : 0.998
+ - submission_blend_1 : 0.975
+ - submission_blend_1_bis : 0.975 --> 0.966
+ - submission_blend_2 : 0.956 --> 0.953
+ - submission_blend_3 : 0.959 --> 0.965
+ - submission_blend_4 : 0.952 --> 0.953
+ - submission_blend_5 : 0.950 --> 0.962
+ - submission_blend_6 : 0.951
+ - submission_blend_7 : 0.950 
+ - submission_blend_8 : 0.950 --> 0.961
+ - submission_blend_9 : 0.950 --> 0.950
+ - submission_blend_10 : 0.950 --> 0.951
+ - kagglers:
+    * submission_1 : 0.987
+    * submission_2 : 0.989
+    * submission_3 : 1.009
+    * submission_4 : 1.007
+
+
+Final : blend
+submission 1 : https://www.kaggle.com/ragnar123/another-1-08-lb-no-leak
+submission 2 : https://www.kaggle.com/aitude/ashrae-kfold-lightgbm-without-leak-1-08
+submission 3 : https://www.kaggle.com/rohanrao/ashrae-half-and-half
+submission 4 : v18
+submission 5 : v37
+submission 6 : v40
+submission 7 : v41
+submission 8 : stacked results
+submission 9 : https://github.com/kuruoky/ASHRAE---Great-Energy-Predictor-III--Flying-Old-Driver (submission_4)
+submission 10 : https://www.kaggle.com/mimoudata/ashrae-lightgbm-without-leak (submission_5)
+submission 11 : https://www.kaggle.com/mimoudata/ashrae-lightgbm-without-leak-data (submission_6)
+
+Blend naming: 
+1 : mean of the submissions (meter_reading directly, not meter_reading_log) 
+1_bis : median of the submissions (meter_reading directly, not meter_reading_log) --> 0.966
+2 : using gradient descent on meter_reading values --> 0.953
+3 : using gradient descent on meter_reading_log values --> 0.965
+4 : using gradient descent on meter_reading values + add stacked model results --> 0.953 (no improvement)
+5 : using gradient descent on meter_reading values + add stacked model results + add median results 1_bis --> 0.962 (no improvement)
+8 : using gradient descent on meter_reading values + add stacked model results + add median results 1_bis + submission_4 --> 0.962 (no improvement)
+9 : using gradient descent on meter_reading values of blend 2,4,5,8
+10 : median on meter_reading_log values of blend 2,4,5,8
+11 : using gradient descent on meter_reading_log values of blend 2,4,5,8 on all data
+12 : remove 0 for meter 0 and remove buildings which had high errors due to (unpredictable) change in behavior + using gradient descent on meter_reading values of blend 2,4,5,8
+14 : remove 0 for meter 0 and remove buildings which had high errors due to (unpredictable) change in behavior + using gradient descent on meter_reading_log values 
+
+
+
+
+next steps : 
+- check stacked results alone
+- add median values and redo the gradient descent
+
